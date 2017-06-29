@@ -1,13 +1,33 @@
 {% extends "gestionplats/base.html" %}
+
+{% comment %} Pour les Images CSS JS{% endcomment %}
+{% load static %}
+
 {% block title %}Ma page d'accueil{% endblock %}
 {% block content %}
     <h2>Bienvenue!</h2>
     <p>
       Les couleurs de l'arc-en-ciel sont :
+      {% comment %}
+        Ceci est une page d'exemple. Elle est composée de 1 tableaux :
+        - tableau des couleurs
+        - locations
+        - retours en garantie
+      {% endcomment %}
       <ul>
       {% for code, nom in couleurs.items %}
           <li style="color:#{{ code }}">{{ nom }}</li>
       {% endfor %}
       </ul>
     </p>
+    <p>
+      <!-- image static de gestionplats/static/gestionplats -->
+      <img src="{% static 'gestionplats/jeuxnintendo.jpg' %}" alt="Mon image gestionplats" />
+    </p>
+    <p>
+      <!-- image static de /static/images  -->
+      <img src="{% static 'images/duckhunt.jpg' %}" alt="Mon image a la racine" />
+    </p>
+    <!-- Ce commentaire HTML sera visible dans le code source. -->
+{# Ce commentaire Django ne sera pas visible dans le code source. #}
 {% endblock %}

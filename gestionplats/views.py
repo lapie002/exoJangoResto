@@ -62,11 +62,14 @@ def view_plat(request, id_plat):
         # return redirect(view_plat, id_plat=69)
         return redirect('afficher_plat', id_plat=69)
 
-    string = request.GET['ref']
+    # option avec l utilisation de la reference passee en parametre
+    # string = request.GET['ref']
+    # text = u"""Vous avez demandé le plat #{0} ! et la reference %s!"""% string
+
     # autre option sans l utilisation de la reference passee en parametre
+    # http://127.0.0.1:8000/gestionplats/plat/1?ref=allgood
     # http://127.0.0.1:8000/gestionplats/plat/1
-    # text = u"""Vous avez demandé le plat #{0} !"""
-    text = u"""Vous avez demandé le plat #{0} ! et la reference %s!"""% string
+    text = u"""Vous avez demandé le plat #{0} !"""
 
     return HttpResponse(
     # HttpRequest.GET    -> "et le ref".request.GET['ref'].
