@@ -21,7 +21,30 @@ def home(request):
 
 def view_redirection(request):
 
-    return HttpResponse("Vous avez été redirigé.")
+    html = "Vous avez été redirigé. "
+    return HttpResponse(html)
+
+def view_redirection_sexe(request):
+
+    # http://127.0.0.1:8000/gestionplats/redirectgender?sexe=homme
+    # http://127.0.0.1:8000/gestionplats/redirectgender?sexe=femme
+    # http://127.0.0.1:8000/gestionplats/redirectgender?sexe=ladyboy
+
+    text = request.GET['sexe']
+    # text = "%s"% string
+    html = ""
+
+    if(text == "homme"):
+        html += "Monsieur"
+    if(text == "femme"):
+        html += "Madame"
+    else:
+        html += " "
+
+    html += ", Vous avez été redirigé "
+
+    return HttpResponse(html)
+
 
 
 def view_plat(request, id_plat):
@@ -40,7 +63,11 @@ def view_plat(request, id_plat):
         return redirect('afficher_plat', id_plat=69)
 
     string = request.GET['ref']
+    # autre option sans l utilisation de la reference passee en parametre
+    # http://127.0.0.1:8000/gestionplats/plat/1
+    # text = u"""Vous avez demandé le plat #{0} !"""
     text = u"""Vous avez demandé le plat #{0} ! et la reference %s!"""% string
+
     return HttpResponse(
     # HttpRequest.GET    -> "et le ref".request.GET['ref'].
     # "Vous avez demandé le plat #{0} ! et la reference %s!".format(id_plat) % string
@@ -61,8 +88,9 @@ def list_plats(request, month, year):
 
 def date_actuelle(request):
 
-    string = request.GET['pseudo']
     # http://127.0.0.1:8000/gestionplats/date?pseudo=bruno
+    string = request.GET['pseudo']
+
     return render(request, 'gestionplats/date.html', {'pseudo':string,'date': datetime.now()})
 
 
@@ -79,3 +107,10 @@ def mapage(request):
     # http://127.0.0.1:8000/gestionplats/mapage?pseudo=bruno
     string = request.GET['pseudo']
     return render(request, 'gestionplats/mapage.html', {'pseudo':string})
+
+
+def view_arc_en_ciel(request):
+
+    Tabcouleurs = {'FF0000':'rouge', 'ED7F10':'orange', 'FFFF00':'jaune', '00FF00':'vert', '0000FF':'bleu', '4B0082':'indigo', '660099':'violet'}
+
+    return render(request, 'gestionplats/arcenciel.html', {'couleurs':Tabcouleurs})

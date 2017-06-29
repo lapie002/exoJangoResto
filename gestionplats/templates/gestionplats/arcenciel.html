@@ -1,0 +1,13 @@
+{% extends "gestionplats/base.html" %}
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+    <h2>Bienvenue!</h2>
+    <p>
+      Les couleurs de l'arc-en-ciel sont :
+      <ul>
+      {% for code, nom in couleurs.items %}
+          <li style="color:#{{ code }}">{{ nom }}</li>
+      {% endfor %}
+      </ul>
+    </p>
+{% endblock %}
