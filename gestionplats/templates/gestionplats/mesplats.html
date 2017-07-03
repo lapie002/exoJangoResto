@@ -1,0 +1,15 @@
+{% extends "gestionplats/base.html" %}
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+
+    <div class="plat">
+    <ul>
+    {% for plat in tous_les_plats %}
+    <li>{{ plat.nom }} {{ plat.prix }}</li>
+    {% empty %}
+    <li>aucun plat</li>
+    {% endfor %}
+    </ul>
+    </div>
+    <!-- {{ plat.nom | truncatewords_html:80 }} -->
+{% endblock %}

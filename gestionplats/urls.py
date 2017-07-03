@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^date$', views.date_actuelle), # pour la vue sur la date actuelle
     url(r'^addition/(?P<nombre1>\d+)/(?P<nombre2>\d+)/$', views.addition), # pour la vue sur l addition de deux chiffres
     url(r'^arcenciel$', views.view_arc_en_ciel),
-    url(r'^mapage$', views.mapage)
+    url(r'^mapage$', views.mapage),
+    url(r'^plats$', views.listerAllPlats)
 ]

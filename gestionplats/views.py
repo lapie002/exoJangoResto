@@ -5,6 +5,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from datetime import datetime
 from django.shortcuts import render
+from .models import Plat, Menu
 
 
 
@@ -117,3 +118,11 @@ def view_arc_en_ciel(request):
     Tabcouleurs = {'FF0000':'rouge', 'ED7F10':'orange', 'FFFF00':'jaune', '00FF00':'vert', '0000FF':'bleu', '4B0082':'indigo', '660099':'violet'}
 
     return render(request, 'gestionplats/arcenciel.html', {'couleurs':Tabcouleurs})
+
+
+def listerAllPlats(request):
+
+    # http://127.0.0.1:8000/gestionplats/plats
+    listePlats = Plat.objects.all()
+
+    return render(request, 'gestionplats/mesplats.html', {'tous_les_plats':listePlats})
